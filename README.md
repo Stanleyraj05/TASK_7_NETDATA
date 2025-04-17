@@ -13,6 +13,7 @@ To set up and visualize real-time system metrics using Netdata, a lightweight an
 
 ## 🖼️ Screenshot Placeholder
 <img width="1440" alt="Screenshot 2025-04-17 at 11 53 59 AM" src="https://github.com/user-attachments/assets/a152ac0a-cfe9-4c86-8a47-a7847e5ec83f" />
+![WhatsApp Image 2025-04-17 at 12 04 16](https://github.com/user-attachments/assets/e57ee71d-7cbd-4d2a-8a5b-a6cd68b78976)
 
 
 # Create the Netdata run script

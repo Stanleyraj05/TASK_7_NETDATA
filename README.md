@@ -1,32 +1,50 @@
-# Task 7: Monitor System Resources Using Netdata
+## 👤 Submitted by
+**Stanley Raj**  
+**NIT Silchar** | Cloud & DevOps Enthusiast
 
-## Objective
-Install Netdata using Docker and visualize system and app performance metrics.
+## 🎯 Objective
+To set up and visualize real-time system metrics using Netdata, a lightweight and powerful monitoring tool. This task uses Docker for simplified deployment.
 
-## Instructions
-1. Make sure Docker is installed and running.
-2. Open terminal and execute the script:
-   ```bash
-   bash run_netdata.sh
-   ```
-3. Access the Netdata dashboard via: [http://localhost:19999](http://localhost:19999)
-4. Explore metrics such as CPU, memory, disk usage, Docker containers, etc.
-5. Observe charts, alerts, and logs (`/var/log/netdata` inside the container).
+## 🧪 Steps Performed in This Script
+1. Checked Docker installation.
+2. Pulled and ran the Netdata Docker container.
+3. Opened access to the Netdata dashboard at [http://localhost:19999](http://localhost:19999).
+4. Viewed container logs to verify successful setup.
 
-## Screenshot (add after testing)
-Please add your Netdata dashboard screenshot here after setup.
+## 🖼️ Screenshot Placeholder
+<img width="1440" alt="Screenshot 2025-04-17 at 11 53 59 AM" src="https://github.com/user-attachments/assets/a152ac0a-cfe9-4c86-8a47-a7847e5ec83f" />
 
-## Notes
-- Lightweight monitoring tool, suitable for local/dev servers.
-- You can stop the container using: `docker stop netdata`
-- To remove: `docker rm netdata`
 
-## Interview Prep Questions
-1. What does Netdata monitor?
-2. How do you view real-time metrics?
-3. How is Netdata different from Prometheus?
-4. What is a collector?
-5. What are some performance KPIs to watch?
-6. How to deploy Netdata on a VM?
-7. How does Netdata alerting work?
-8. What is a dashboard in this context?
+# Create the Netdata run script
+cat << 'EOF' > run_netdata.sh
+#!/bin/bash
+
+echo "🚀 Starting Netdata container..."
+
+docker run -d --name=netdata -p 19999:19999 --cap-add=SYS_PTRACE \
+  -v netdataconfig:/etc/netdata \
+  -v netdatalib:/var/lib/netdata \
+  -v netdatacache:/var/cache/netdata \
+  -v /etc/passwd:/host/etc/passwd:ro \
+  -v /etc/group:/host/etc/group:ro \
+  -v /proc:/host/proc:ro \
+  -v /sys:/host/sys:ro \
+  -v /etc/os-release:/host/etc/os-release:ro \
+  netdata/netdata
+
+echo "✅ Netdata container is running."
+echo "📊 Access Netdata at: http://localhost:19999"
+echo "📝 Showing last 10 logs:"
+docker logs --tail 10 netdata
+EOF
+
+# Make script executable
+chmod +x run_netdata.sh
+
+echo "📦 STEP 2: Running Netdata container..."
+./run_netdata.sh
+
+echo ""
+echo "✅ All steps completed successfully!"
+echo "📂 Files created: README.md, run_netdata.sh"
+echo "📁 Project folder: $(pwd)"

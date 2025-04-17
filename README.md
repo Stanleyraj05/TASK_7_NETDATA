@@ -12,7 +12,9 @@ To set up and visualize real-time system metrics using Netdata, a lightweight an
 4. Viewed container logs to verify successful setup.
 
 ## 🖼️ Screenshot Placeholder
-<img width="1440" alt="Screenshot 2025-04-17 at 11 53 59 AM" src="https://github.com/user-attachments/assets/a152ac0a-cfe9-4c86-8a47-a7847e5ec83f" />
+<img width="1440" alt="Screenshot 2025-04-17 at 11 53 59 AM" src="https://github.com/user-attachments/assets/82c94568-5818-4e87-a055-5596ec174f08" />
+
+
 
 # Create the Netdata run script
 cat << 'EOF' > run_netdata.sh
